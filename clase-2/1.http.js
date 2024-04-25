@@ -1,4 +1,5 @@
 const http = require('node:http')
+const fs = require('node:fs')
 
 const desiredPort = process.env.PORT ?? 1234
 
@@ -10,6 +11,17 @@ const processRequest = (req, res) => {
     } else if (req.url === '/contacto') {
         req.statusCode = 200 //ok
         res.end('<h1>Sitio de contacto</h1>')
+    } else if (req.url === '/image.png') {
+        fs.readFile('./dog.png', (err, data) => {
+          if (err) {
+            res.statusCode = 500
+            res.end('<h1>Imagen no encontrada...</h1>')
+          }  else {
+            res.setHeader('Content-type', 'image/png')
+            res.end(data)
+          }
+        })
+   
     } else {
         res.statusCode = 404 //Not found
         res.end('<h1> 404, Página no encontrada...</h1>')
