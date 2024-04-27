@@ -1,6 +1,5 @@
 const pc = require('picocolors')
 
-
 // function promesaSencilla() {
 //     return new Promise((resolve, reject) => {
 //         setTimeout(() => {
@@ -17,12 +16,7 @@ const pc = require('picocolors')
 // }
 
 // asyncCall();
-
-
-//Ejercicio 3 Promise
-
-
-
+// Ejercicio 3 Promise
 // function promesaTres() {
 //     const number = 3;
 //     return new Promise((res, rej) => {
@@ -32,24 +26,24 @@ const pc = require('picocolors')
 
 // promesaTres()
 
-
 // Ejercicio mejorado separando la logica y agregando un manejo de errores
 
 function promesaTresMejorada() {
-    const number = 3;
+  const number = 3
 
-    return new Promise((res, rej) => {
-        if (typeof number !== 'number') {
-            rej(new Error(pc.bgRed('El valor no es un numero!')))
-        } else {
-            const resultado = number + number;
-            res(resultado)
-        }
-    })
+  // eslint-disable-next-line promise/param-names
+  return new Promise((res, rej) => {
+    if (typeof number !== 'number') {
+      rej(new Error(pc.bgRed('El valor no es un numero!')))
+    } else {
+      const resultado = number + number;
+      res(resultado)
+    }
+  })
 }
 promesaTresMejorada()
-    .then(resultado => {
-        console.log(pc.bgGreen(`El resultado es: ${resultado}`))
-    }).catch(error => {
-        console.error('Ocurrio un error:', error)
-    })
+  .then(resultado => {
+    console.log(pc.bgGreen(`El resultado es: ${resultado}`))
+  }).catch(error => {
+    console.error('Ocurrio un error:', error)
+  })
