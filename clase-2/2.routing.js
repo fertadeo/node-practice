@@ -19,6 +19,10 @@ const processRequest = (req, res) => {
       switch (url) {
         case '/pokemon/':
           let body = ''
+          // escuchar el evento data
+          req.on('data', chunk => {
+            body += chunk.toString()
+          } )
       }
   }
 }
