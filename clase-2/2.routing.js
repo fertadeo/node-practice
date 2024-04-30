@@ -23,6 +23,15 @@ const processRequest = (req, res) => {
           req.on('data', chunk => {
             body += chunk.toString()
           } )
+
+          req.on('end', () => {
+            const data = JSON.parse(body)
+            // Llamamos a una base de datos para guardar la info
+            res.writeHead(201, {'Content-Type': 'application/json; charset=utf-8'} )
+            res.end(JSON.stringify(data))
+          })
+
+          break; 
       }
   }
 }
